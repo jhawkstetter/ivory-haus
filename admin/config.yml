@@ -1,0 +1,85 @@
+backend:
+  name: git-gateway
+  branch: main
+  commit_messages:
+    create: 'CMS: create {{collection}} "{{slug}}"'
+    update: 'CMS: update {{collection}} "{{slug}}"'
+    delete: 'CMS: delete {{collection}} "{{slug}}"'
+    uploadMedia: 'CMS: upload "{{path}}"'
+    deleteMedia: 'CMS: delete "{{path}}"'
+
+media_folder: "uploads"
+public_folder: "/uploads"
+
+site_url: https://haus-2.netlify.app
+display_url: https://haus-2.netlify.app
+logo_url: https://haus-2.netlify.app/marble-bg.jpg
+
+publish_mode: simple
+
+collections:
+  - name: "settings"
+    label: "Site Settings"
+    description: "General site information, contact details, and global content."
+    delete: false
+    editor:
+      preview: false
+    files:
+      - name: "site"
+        label: "Site Settings"
+        file: "_data/site.json"
+        fields:
+          - { name: title,       label: "Site Title",       widget: string }
+          - { name: description, label: "Meta Description", widget: text }
+          - { name: phone,       label: "Phone",            widget: string }
+          - { name: email,       label: "Email",            widget: string }
+          - { name: address,     label: "Address",          widget: string }
+
+      - name: "hero"
+        label: "Hero Section"
+        file: "_data/hero.json"
+        fields:
+          - { name: tagline,  label: "Tagline (above headline)",     widget: string }
+          - { name: headline, label: "Headline",                     widget: text, hint: "Supports <br> and <em> HTML tags." }
+          - name: ctas
+            label: "Call-to-action Buttons"
+            widget: list
+            max: 3
+            fields:
+              - { name: label, label: "Label", widget: string }
+              - { name: href,  label: "Link",  widget: string, hint: "Use #anchor for on-page links or a full URL." }
+
+      - name: "intro"
+        label: "Philosophy Section"
+        file: "_data/intro.json"
+        fields:
+          - { name: eyebrow,  label: "Eyebrow",        widget: string }
+          - { name: heading,  label: "Heading",        widget: text,   hint: "Supports <br> and <em> HTML tags." }
+          - name: paragraphs
+            label: "Body Paragraphs"
+            widget: list
+            field: { name: text, label: "Paragraph", widget: text }
+          - name: quote
+            label: "Featured Quote"
+            widget: object
+            fields:
+              - { name: text,   label: "Quote Text", widget: text }
+              - { name: author, label: "Attribution", widget: string }
+          - name: stats
+            label: "Stats"
+            widget: list
+            max: 4
+            min: 1
+            fields:
+              - { name: number, label: "Number",      widget: string, hint: "e.g. 15, 4K, 98, 1" }
+              - { name: suffix, label: "Suffix",      widget: string, required: false, hint: "Shown as a superscript, e.g. +, %, st" }
+              - { name: label,  label: "Label",       widget: string }
+
+      - name: "ticker"
+        label: "Services Ticker"
+        file: "_data/ticker.json"
+        fields:
+          - name: items
+            label: "Ticker Items"
+            widget: list
+            field: { name: name, label: "Service", widget: string }

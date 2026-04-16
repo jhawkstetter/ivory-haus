@@ -1,0 +1,8 @@
+{
+  "tagline": "Oklahoma City &nbsp;·&nbsp; A New Era of Luxury Dentistry",
+  "headline": "We are not your average dentist.<br>We are <em>Ivory Haus.</em>",
+  "ctas": [
+    { "label": "Book a Consultation",      "href": "#book" },
+    { "label": "What Makes Us Different",  "href": "#difference" }
+  ]
+}
