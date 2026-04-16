@@ -1,0 +1,18 @@
+{
+  "eyebrow": "Our Philosophy",
+  "heading": "Dentistry<br>reimagined. <em>Entirely.</em>",
+  "paragraphs": [
+    { "text": "We started Ivory Haus because we believed something the industry had forgotten: your time in the dental chair should feel like an investment in yourself, not an interruption to your day." },
+    { "text": "Every detail — the lighting, the materials, the technology, the conversation — has been curated with a singular intention. To make this the appointment you actually look forward to." }
+  ],
+  "quote": {
+    "text": "I wanted to change the narrative around dentistry entirely — to create a space where excellence and beauty exist in equal measure.",
+    "author": "Dr. Cohlmia, Founder"
+  },
+  "stats": [
+    { "number": "15", "suffix": "+",  "label": "Years of Artistry" },
+    { "number": "4K", "suffix": "+",  "label": "Smiles Transformed" },
+    { "number": "98", "suffix": "%",  "label": "Patient Satisfaction" },
+    { "number": "1",  "suffix": "st", "label": "Of Its Kind in OKC" }
+  ]
+}

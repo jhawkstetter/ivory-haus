@@ -44,12 +44,13 @@ layout: layout.njk
   </div>
   </div>
 
-  <p class="hero-tagline">Oklahoma City &nbsp;·&nbsp; A New Era of Luxury Dentistry</p>
-  <h1 class="hero-headline">We are not your average dentist.<br>We are <em>Ivory Haus.</em></h1>
+  <p class="hero-tagline">{{ hero.tagline | safe }}</p>
+  <h1 class="hero-headline">{{ hero.headline | safe }}</h1>
 
   <div class="hero-ctas">
-    <a href="#book" class="btn-hero-primary">Book a Consultation</a>
-    <a href="#difference" class="btn-hero-primary">What Makes Us Different</a>
+    {%- for cta in hero.ctas -%}
+    <a href="{{ cta.href }}" class="btn-hero-primary">{{ cta.label }}</a>
+    {%- endfor -%}
   </div>
 
 </section>
@@ -57,8 +58,8 @@ layout: layout.njk
 <!-- TICKER -->
 <div class="ticker">
   <div class="ticker-track">
-        <div class="ticker-item"><span>Smile Design</span><span class="ticker-dot"></span><span>Porcelain Veneers</span><span class="ticker-dot"></span><span>Invisalign</span><span class="ticker-dot"></span><span>Teeth Whitening</span><span class="ticker-dot"></span><span>Dental Implants</span><span class="ticker-dot"></span><span>Composite Bonding</span><span class="ticker-dot"></span><span>Digital X-Rays</span><span class="ticker-dot"></span><span>Full Mouth Restoration</span><span class="ticker-dot"></span></div>
-        <div class="ticker-item"><span>Smile Design</span><span class="ticker-dot"></span><span>Porcelain Veneers</span><span class="ticker-dot"></span><span>Invisalign</span><span class="ticker-dot"></span><span>Teeth Whitening</span><span class="ticker-dot"></span><span>Dental Implants</span><span class="ticker-dot"></span><span>Composite Bonding</span><span class="ticker-dot"></span><span>Digital X-Rays</span><span class="ticker-dot"></span><span>Full Mouth Restoration</span><span class="ticker-dot"></span></div>
+        <div class="ticker-item">{%- for item in ticker.items -%}<span>{{ item.name }}</span><span class="ticker-dot"></span>{%- endfor -%}</div>
+        <div class="ticker-item">{%- for item in ticker.items -%}<span>{{ item.name }}</span><span class="ticker-dot"></span>{%- endfor -%}</div>
       </div>
     </div>
 
@@ -67,29 +68,20 @@ layout: layout.njk
   <div class="wrap">
     <div class="intro-inner reveal">
       <div class="intro-left">
-        <p class="eyebrow">Our Philosophy</p>
-        <h2 class="display">Dentistry<br>reimagined. <em>Entirely.</em></h2>
-        <p class="body-copy">We started Ivory Haus because we believed something the industry had forgotten: your time in the dental chair should feel like an investment in yourself, not an interruption to your day.</p>
-        <p class="body-copy">Every detail — the lighting, the materials, the technology, the conversation — has been curated with a singular intention. To make this the appointment you actually look forward to.</p>
-        <blockquote class="intro-statement">"I wanted to change the narrative around dentistry entirely — to create a space where excellence and beauty exist in equal measure."<br><span style="font-size:12px;letter-spacing:.2em;text-transform:uppercase;font-style:normal;opacity:.5;">— Dr. Cohlmia, Founder</span></blockquote>
+        <p class="eyebrow">{{ intro.eyebrow }}</p>
+        <h2 class="display">{{ intro.heading | safe }}</h2>
+        {%- for p in intro.paragraphs -%}
+        <p class="body-copy">{{ p.text | safe }}</p>
+        {%- endfor -%}
+        <blockquote class="intro-statement">"{{ intro.quote.text }}"<br><span style="font-size:12px;letter-spacing:.2em;text-transform:uppercase;font-style:normal;opacity:.5;">— {{ intro.quote.author }}</span></blockquote>
       </div>
       <div class="intro-right">
+        {%- for stat in intro.stats -%}
         <div class="intro-stat">
-          <p class="intro-stat-num">15<sup>+</sup></p>
-          <p class="intro-stat-label">Years of Artistry</p>
+          <p class="intro-stat-num">{{ stat.number }}{% if stat.suffix %}<sup>{{ stat.suffix }}</sup>{% endif %}</p>
+          <p class="intro-stat-label">{{ stat.label }}</p>
         </div>
-        <div class="intro-stat">
-          <p class="intro-stat-num">4K<sup>+</sup></p>
-          <p class="intro-stat-label">Smiles Transformed</p>
-        </div>
-        <div class="intro-stat">
-          <p class="intro-stat-num">98<sup>%</sup></p>
-          <p class="intro-stat-label">Patient Satisfaction</p>
-        </div>
-        <div class="intro-stat">
-          <p class="intro-stat-num">1<sup>st</sup></p>
-          <p class="intro-stat-label">Of Its Kind in OKC</p>
-        </div>
+        {%- endfor -%}
       </div>
     </div>
   </div>
@@ -398,7 +390,7 @@ layout: layout.njk
     <p class="cta-sub">New patient consultations are complimentary. Come see the studio, meet the team, and discover what elevated dental care truly feels like.</p>
     <div class="cta-actions">
       <a href="#" class="btn-gold">Book a Consultation</a>
-      <a href="tel:+14058482886" class="btn-ghost-light">Call 405 848 2886</a>
+      <a href="tel:+14058482886" class="btn-ghost-light">Call {{ site.phone }}</a>
     </div>
   </div>
 </section>
@@ -409,17 +401,17 @@ layout: layout.njk
     <div class="contact-row">
       <div class="contact-cell">
         <p class="contact-label">Visit Us</p>
-        <a href="https://maps.google.com/?q=1+NW+102nd+St+Oklahoma+City+OK" class="contact-val">1 NW 102nd St, OKC</a>
+        <a href="https://maps.google.com/?q={{ site.address | urlencode }}" class="contact-val">{{ site.address }}</a>
         <p class="contact-note">Oklahoma City, OK 73116</p>
       </div>
       <div class="contact-cell">
         <p class="contact-label">Call or Text</p>
-        <a href="tel:+14058482886" class="contact-val">405 848 2886</a>
+        <a href="tel:+14058482886" class="contact-val">{{ site.phone }}</a>
         <p class="contact-note">Mon – Fri, 8am – 5pm</p>
       </div>
       <div class="contact-cell">
         <p class="contact-label">Email Us</p>
-        <a href="mailto:hello@ivoryhaus.com" class="contact-val">hello@ivoryhaus.com</a>
+        <a href="mailto:{{ site.email }}" class="contact-val">{{ site.email }}</a>
         <p class="contact-note">We respond within 24 hours</p>
       </div>
     </div>

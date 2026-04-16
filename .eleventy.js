@@ -3,6 +3,8 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy("main.js");
   eleventyConfig.addPassthroughCopy("marble-bg.jpg");
   eleventyConfig.addPassthroughCopy("dr-cohlmia.jpg");
+  eleventyConfig.addPassthroughCopy("admin");
+  eleventyConfig.addPassthroughCopy("uploads");
 
   return {
     dir: {
